@@ -29,7 +29,6 @@
 #define plugintag "Sunucu"
 
 bool KomutKullanildi[MAXPLAYERS + 1];
-bool MesajGonderildi[MAXPLAYERS + 1];
 Handle CvarKredi;
 
 public Plugin myinfo =
@@ -102,31 +101,6 @@ public Action WeaponEquip(int client, int weapon)
 		return Plugin_Handled;
 	}
 	return Plugin_Continue;
-}
-
-public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, Float:vel[3], Float:angles[3], int &weapon)
-{
-	if (KomutKullanildi[client])
-	{
-		if ((buttons & IN_ATTACK) || (buttons & IN_ATTACK2))
-		{
-			if (!(MesajGonderildi[client]))
-			{
-				CPrintToChat(client, "{darkred}[%s] {orchid}Süt Ol {default}yazdığınız için {lime}silah {red}kullanamazsınız!", plugintag);
-				MesajGonderildi[client] = true;
-				CreateTimer(5.0, MesajlariSifirla, client);
-			}
-			
-			return Plugin_Handled;
-		}
-	}
-	
-	return Plugin_Continue;
-}
-
-public Action MesajlariSifirla(Handle timer, int client)
-{
-	MesajGonderildi[client] = false;
 }
 
 OyunculariSifirlari()
