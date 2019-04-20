@@ -57,6 +57,12 @@ public OnMapStart()
 	}
 }
 
+public OnClientPutInServer(int client)
+{
+	KomutKullanildi[client] = false;
+	SDKUnhook(client, SDKHook_WeaponEquip, WeaponEquip);
+}
+
 public Action sutol(int client, int args)
 {
 	if (!(IsClientInGame(client)))
@@ -108,7 +114,6 @@ OyunculariSifirlari()
 	for (new i = 1; i <= MaxClients; i++)
 	{
 		KomutKullanildi[i] = false;
-		MesajGonderildi[i] = false;
 		SDKUnhook(i, SDKHook_WeaponEquip, WeaponEquip);
 	}
 }
