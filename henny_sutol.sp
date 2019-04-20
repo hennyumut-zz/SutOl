@@ -17,6 +17,12 @@
  *
  * You should have received a copy of the GNU General Public License along with
  * this program. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Not (TR);
+ * Eklentilerin bir çok kişiye ulaşması için eklentilerde bulunan küçük reklamları kaldırıp kendi isminizi yazarak insanları kandırmayın!
+ * Note (EN);
+ * Don't fool people by removing small ads in add-ons and typing your own name so that plug-ins can reach many people!
+ *
  */
 
 #include <sourcemod>
@@ -96,6 +102,7 @@ public Action sutol(int client, int args)
 public Action turBaslangici(Event event, const String:name[], bool dontBroadcast)
 {
 	OyunculariSifirlari();
+	CPrintToChatAll("{gold}Süt Ol {default}eklentisi {darkred}Henny! {default}tarafından {green}kodlanmıştır.");
 }
 
 public Action WeaponEquip(int client, int weapon)
